@@ -1,22 +1,22 @@
-// LOCAL SCOPE / Functional scope 
-//  1->varibale declared inside a function stays in the scope of that function 
+// LOCAL SCOPE / Functional scope
+//  1->varibale declared inside a function stays in the scope of that function
 //  2->varibale declared in a function cannot be accesed outside the function
-//  3->Two fucntions can have similar variable declared and their scope stays in their respective function 
+//  3->Two fucntions can have similar variable declared and their scope stays in their respective function
 //  4->->same variable can be defined in two different scopes
 // 5->var is scoped to functions
 
-let log = console.log
+let log = console.log;
 
 function one() {
-    let msg = "i belong to one"
-    log(msg);
+  let msg = "i belong to one";
+  log(msg);
 }
 
 function two() {
-    let msg = "I BELONG TO TWO"
-    var msgVar = "I BELONG TO TWO VARRRRR"
-    log(msg);
-    log(msgVar);
+  let msg = "I BELONG TO TWO";
+  var msgVar = "I BELONG TO TWO VARRRRR";
+  log(msg);
+  log(msgVar);
 }
 
 one();
@@ -28,52 +28,44 @@ two();
 // log(msgVar);
 // o/p Uncaught ReferenceError: msgVar is not defined
 
-
 // 4
 let here = "I'm in gloabal scope";
 
 function functionScope() {
-    let here = "I'm in local scope";
-    log(here);
+  let here = "I'm in local scope";
+  log(here);
 }
 
 functionScope();
 log(here);
 
-
 // Block scope
 // 1->   BLOCK SCOPE IS JS IS DEFINED BY "{ }"
-// 2->  varibale declared inside a Block stays in the scope of that block 
+// 2->  varibale declared inside a Block stays in the scope of that block
 // 3->LET and CONTS are block scoped
 // 4->VAR is not block scoped
 
-
 // 3
 if (true) {
-    let animal = "pengu let";
+  let animal = "pengu let";
 }
 // console.log(animal);
 // Uncaught ReferenceError: animal is not defined
 
 if (true) {
-    const animalCon = "pengu const";
+  const animalCon = "pengu const";
 }
 // 3
 // console.log(animalCon);
 // Uncaught ReferenceError: animalCon is not defined
 
 if (true) {
-    var animalVar = 'pengu Var'
+  var animalVar = "pengu Var";
 }
 // 4
 console.log(animalVar);
 
-
-
-
-
-
-// VAR 
+// VAR
 // ->function scoped
 // -> NOT block scoped
 // ->can be redeclared
@@ -87,8 +79,7 @@ console.log(animalVar);
 
 let numLet = 8;
 numLet = 2;
-log(numLet, 're-assigend let');
-
+log(numLet, "re-assigend let");
 
 // CONST
 // ->function scoped
@@ -100,173 +91,213 @@ const num = 7;
 // num=25;
 // Uncaught TypeError: Assignment to constant variable.
 
-
-
-
-
-
-
 // LEXICAL SCOPE
 
-// ->In nexted functions the variables declared in parent function can be accessed from the child 
+// ->In nexted functions the variables declared in parent function can be accessed from the child
 // ->the child function cannot be accessed from the global scope
 
 function parent() {
-    let hero = 'Doctor stange'
+  let hero = "Doctor stange";
 
-    function child() {
-        let cryForHelp = `${hero} , please help me!`;
-        log(cryForHelp, 'from child');
-    }
+  function child() {
+    let cryForHelp = `${hero} , please help me!`;
+    log(cryForHelp, "from child");
+  }
 
-    child();
-    // OR 
+  child();
+  // OR
 
-    function childtwo() {
-        let cryForHelp = `${hero} , please help me!`;
-        log(cryForHelp, 'from child two');
-    }
+  function childtwo() {
+    let cryForHelp = `${hero} , please help me!`;
+    log(cryForHelp, "from child two");
+  }
 
-    // log(cryForHelp)
-    // o/p cryForHelp is not defined
+  // log(cryForHelp)
+  // o/p cryForHelp is not defined
 }
-parent()
-
+parent();
 
 // Lexical scope can go in many levels deep
 
 function out() {
-    let movie = 'no way home';
+  let movie = "no way home";
 
-    (function inner() {
-        // let movie='push';
-        // if it cannot find movie in here, it moves up a level 
+  (function inner() {
+    // let movie='push';
+    // if it cannot find movie in here, it moves up a level
 
-        (function shouldntHaveComeThisFar() {
-            log(movie.toUpperCase())
-        })();
+    (function shouldntHaveComeThisFar() {
+      log(movie.toUpperCase());
     })();
-
+  })();
 }
 out();
 // o/p --->NO WAY HOME
 
-
-
-
-
 // FUNCTION EXPRESSION
 
 let add = (x, y) => {
-    return x + y;
-}
+  return x + y;
+};
 
-log(add(2, 2), 'Add')
-
+log(add(2, 2), "Add");
 
 let addAgain = function (x, y) {
-    return x + y;
-}
+  return x + y;
+};
 
-log(addAgain(2, 2), 'add Again')
-
+log(addAgain(2, 2), "add Again");
 
 let add3 = function adding(x, y) {
-    return x + y;
-}
+  return x + y;
+};
 
-log(add3(2, 2), 'add3')
-
-
-
-
-
+log(add3(2, 2), "add3");
 
 // Higher Order Function
 // Using functions as values
 
 function checkCapital(text) {
+  if (/^[A-Z]*$/.test(text)) {
+    return `Name has captial letters`;
+  }
 
-    if (/^[A-Z]*$/.test(text)) {
-        return `Name has captial letters`
-    }
-
-    return `No capitals`
+  return `No capitals`;
 }
 
 function hasVowels(text) {
-
-    for (let ele of ['a', 'e', 'i', 'o', 'u']) {
-        if (text.includes(ele)) {
-            return `Name has vowels`;
-        }
+  for (let ele of ["a", "e", "i", "o", "u"]) {
+    if (text.includes(ele)) {
+      return `Name has vowels`;
     }
+  }
 
-    return `No vowels`
-
+  return `No vowels`;
 }
 
 function giveLength(text) {
-    return `${text.length} is the length of Name`
+  return `${text.length} is the length of Name`;
 }
 
 function hasSpace(text) {
-    if (text.includes(' ')) {
-        return true;
-    }
-    return 'Name Has No Space';
+  if (text.includes(" ")) {
+    return true;
+  }
+  return "Name Has No Space";
 }
 
 // Using function as a array element
 let testsArray = [checkCapital, hasVowels, giveLength, hasSpace];
 
-log(testsArray[1]('Jade'))
+log(testsArray[1]("Jade"));
 
 for (let ele of testsArray) {
-    log(ele('Judith'),'----->Function as ARRAY');
+  log(ele("Judith"), "----->Function as ARRAY");
 }
 
 // Using function as object values
-let testObj={
-    'checkCapital':checkCapital,
-    'HasVowels':hasVowels,
-    'giveLength':giveLength,
-    'hasSpace':hasSpace
-}
+let testObj = {
+  checkCapital: checkCapital,
+  HasVowels: hasVowels,
+  giveLength: giveLength,
+  hasSpace: hasSpace,
+};
 
-log(testObj.giveLength('MyName Jeff'),'----->Function as OBJECT');
+log(testObj.giveLength("MyName Jeff"), "----->Function as OBJECT");
 
 for (let ele of Object.values(testObj)) {
-    log(    ele('judith') ,'----->Function as OBJECT'  );
+  log(ele("judith"), "----->Function as OBJECT");
 }
 
-
 // Higher order Functions
+log("Higher order Functions");
 
 // 1------->FUNCTIONS THAT ACCEPTS OTHER FUNCTIONS AD ARGUMENTS
 // 2-------> RETURNS A FUNCTION
 
+log("FUNCTIONS THAT ACCEPTS OTHER FUNCTIONS As ARGUMENTS");
 // examples for 1
-function callTwice(fun){
-    fun();
-    fun();
+function callTwice(fun) {
+  fun();
+  fun();
 }
 
-function laugh(){
-    log('ha-ha');
+function laugh() {
+  log("ha-ha");
 }
 
 callTwice(laugh);
 
-
+log("FUNCTIONS THAT RETURN A FUNCTION");
 // example for 2
 
-function multi(num){
-    return function(x){
-            console.log(x * num ,'fucntion as a return value');
+function multi(num) {
+  return function (x) {
+    console.log(x, "<--this is x"); //3
+    console.log(num, "<--this is num"); //4
+    console.log(x * num, "fucntion as a return value");
+  };
+}
+
+let ans = multi(4);
+
+log(ans(3), "fucntion as a return value");
+
+let arrayMax = [1, 2, 3, 4, 5];
+
+// excrcise
+// find out if a value is between 2 values
+// 2 values to get range
+// the values that needs checking
+
+function midCheck(min, max) {
+    return (val)=>{
+            if(val <max && val >min){
+                log(`hooray!! the ${val} falls between minimun and maximum.`);
+            }else{
+                log(`Sorry, ${val} does not fall in the range!`);
+            }
     }
 }
 
-let ans=multi(4);
+let checkMinMax=midCheck(1,10);
 
-log(ans(3),'fucntion as a return value');
+checkMinMax(6);
+checkMinMax(0);
+checkMinMax(0.5);
+checkMinMax(2);
+
+
+//CALL BACKS
+//  a function passed into another function as an argument 
+// which is then invoked inside another function 
+
+// function sayHello(){
+//     alert('welcome to the study place')
+// }
+
+// setTimeout(sayHello,2000);
+
+// setTimeout(()=>{
+// alert('how do you do')  
+// },2000)
+
+let btn=document.querySelector('button');
+
+setTimeout(()=>{
+    btn.style.backgroundColor='red',
+    btn.style.color='white'
+})
+
+btn.addEventListener('click',()=>{
+alert('go away!')
+})
+
+btn.addEventListener('mouseover',()=>{
+    btn.style.backgroundColor='pink'
+    btn.style.color='white'
+})
+btn.addEventListener('mouseleave',()=>{
+    btn.style.backgroundColor='grey'
+    btn.style.color='white'
+})
