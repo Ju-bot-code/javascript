@@ -8,8 +8,22 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Document</title>
   </head>
+  <script>
+    let pageData = [{}];
+  </script>
+  <style>
+    .logo {
+      display: block;
+      text-indent: -9999px;
+      width: 10px;
+      height: 12px;
+      background: url(./public/svg/arrow.svg);
+      background-size: 10px 12px;
+    }
+  </style>
 
   <body class="m-40 text-xl font-thin underline-offset-8 gap-3">
+    <!-- Lessons-->
     <h1 class="underline">LESSONS</h1>
 
     <div class="flex flex-col gap-4 my-3">
@@ -133,10 +147,57 @@
         </svg>
         few miscellaneous js features
       </a>
-
-      <a href="./lessons/practice.html">
-        svf
+      <a
+        class="text-blue-600 underline ml-7 flex gap-3"
+        href="./lessons/features.html"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"
+          />
+        </svg>
+        destructure
       </a>
+
+      <!-- <a href="./lessons/practice.html"> practice </a> -->
+    </div>
+
+    <!-- Problems-->
+    <h1 class="underline mt-10">PROBLEMS</h1>
+    <div class="flex flex-col gap-4 my-3">
+      <a
+        class="text-blue-600 underline ml-7 flex gap-3"
+        href="./problem/reverData.html"
+      >
+        Rever problems
+      </a>
+      <a
+        class="text-blue-600 underline ml-7 flex gap-3"
+        href="./problem/Palindrome.html"
+      >
+        Palindrome problems
+      </a>
+    </div>
+
+    <!-- PRACTICE pages -->
+    <h1 class="underline mt-10">PRACTICE</h1>
+    <div class="flex flex-col gap-4 my-3">
+      <a
+        class="text-blue-600 underline ml-7 flex gap-3"
+        href="./pratice/page1.html"
+      >
+       Page 1
+      </a>
+    
     </div>
   </body>
 </html>

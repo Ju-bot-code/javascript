@@ -61,25 +61,82 @@ here();
 
 // getBtn.addEventListener("click", doApp);
 
+let child = document.createElement("hr");
 
-let child=document.createElement('hr');
+let parent = document.getElementById("append");
 
-let parent =document.getElementById('append');
+let btn = document.getElementById("btnApp");
 
-let btn=document.getElementById('btnApp');
+btn.addEventListener("click", function () {
+  let names = ["james", "jaden"];
 
-btn.addEventListener('click',function(){
-    let names=['james','jaden']
+  for (ele of names) {
+    let div = document.createElement("div");
+    div.innerHTML = ele;
 
-    for(ele of names){
-        let div=document.createElement('div');
-        div.innerHTML=ele;
+    parent.appendChild(div);
+  }
+});
 
-        parent.appendChild(div);
+btn.addEventListener("click", function () {
+  alert("hello");
+});
+
+// Recursion function
+
+// The process in which a function calls itself directly or indirectly is called recursion  and the corresponding function is called a recursive function.
+
+// PROBLEM
+// turn the multi dimentional array into single dimension
+
+let arr = [1, 2, 3, [4, 5, [6, 7, 8]], 8];
+
+let done = [];
+
+function res(arr) {
+  for (a of arr) {
+    if (Array.isArray(a)) {
+      res(a);
     }
-})
+    done = [...done, a];
+  }
+}
 
-btn.addEventListener('click',function(){
-    alert('hello');
-})
+res(arr);
+console.log(done, "Complete");
 
+// Check if data type is Array
+
+console.log(Array.isArray(arr), "<--- Array.isArray(done)");
+
+console.log(arr instanceof Array, "<---- arr instanceof Array");
+
+// PROBLEM
+// Create a promise and return it after 2 seconds
+
+// immideate return
+
+let immideatePromise = new Promise((resolve, reject) => {
+  resolve("Promise resolved");
+  // reject(new Error('Promise rejected'));
+});
+immideatePromise
+  .then((data) => console.log(data))
+  .catch((error) => console.log(error));
+
+// Run after 2 seconds
+let promiseFullfil = new Promise((resolve, reject) => {
+  setTimeout(resolve("completed, promise resolved example"), 2000);
+});
+
+let promiseReject = new Promise((resolve, reject) => {
+  setTimeout(reject(new Error("reject promise example")), 2000);
+});
+
+promiseFullfil
+  .then((data) => console.log(data))
+  .catch((err) => console.log(err));
+
+promiseReject
+  .then((data) => console.assert.log(data))
+  .catch((err) => console.log(err));
